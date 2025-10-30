@@ -1,0 +1,100 @@
+# Eternal Memorial Frontend Prompt
+
+## Overview
+Create a spiritual, memorable, and emotionally resonant frontend for the Eternal Memorial web application. The design should evoke a sense of peace, remembrance, and gentle beauty, supporting both Daylight and Candlelight Night modes. Prioritize accessibility, clarity, and a comforting user experience.
+
+## Color Palette
+
+### Daylight Mode (🌸)
+- **Background gradient start:** Cream — `#FFF9F3` (page background / light area)
+- **Background gradient end:** Lavender haze — `#F4EAFB` (soft purple wash)
+- **Text (primary):** Dark gray — `#333333` (headlines / body copy)
+- **Primary (accent/buttons):** Soft gold — `#C6A664` (buttons, borders, input focus)
+- **Accent (secondary):** Light sky blue — `#BFDCE5` (links, subtle highlights)
+
+### Candlelight Night Mode (🕯️)
+- **Background gradient start:** Deep navy — `#0D1B2A`
+- **Background gradient end:** Dark indigo — `#1B263B`
+- **Text (primary):** Light beige — `#F9E9C9` (body & headings on dark bg)
+- **Primary glow:** Golden amber — `#E5B567` (glows, candle bases, CTA glow)
+- **Accent (warm):** Soft warm orange — `#FFCC8C` (hover, small highlights)
+
+## Design Guidance
+- Use soft gradients and gentle transitions between colors.
+- Typography should be elegant, readable, and calming.
+- Buttons and CTAs should use soft gold or golden amber, with subtle glows in night mode.
+- Incorporate spiritual/memorial motifs: candles, gentle light, soft borders, and rounded corners.
+- Ensure all interactive elements are accessible and visually distinct in both modes.
+- Use sky blue and warm orange for highlights, links, and hover states.
+- Provide a toggle for Daylight/Candlelight Night mode.
+
+## Example Components
+- Memorial pages with candle lighting interactions
+- Comment sections with soft backgrounds and clear input focus
+- Admin and user flows styled consistently with the above palette
+
+
+## Deliverable
+A frontend implementation (React, Next.js, or similar) that fully realizes the above design and color palette, and is ready to connect to the Eternal backend API.
+
+## Frontend-Backend Integration Guidance
+
+- Use the backend API endpoints as described in the README for all data operations (authentication, memorials, comments, candles, admin, etc.).
+- All authentication-protected endpoints require a JWT token in the `Authorization` header as `Bearer <token>`.
+- After login or registration, store the JWT token in localStorage or cookies and attach it to all protected API requests.
+- Use the user ID from the JWT payload or `/api/users/me` for actions that require `userId` (e.g., creating memorials, comments, candles).
+- For file/image uploads, use the backend's Cloudinary integration endpoints.
+- Handle all error messages and validation responses from the backend gracefully in the UI.
+- Ensure all user/admin flows in the UI map directly to backend endpoints and data models.
+
+## Example API Usage
+
+- **Login/Register:**
+	- POST to `/api/auth/login` or `/api/auth/register` with user credentials.
+	- On success, save the returned `token` and use it for all protected requests.
+- **Get Profile:**
+	- GET `/api/users/me` with `Authorization: Bearer <token>`
+- **Create Memorial:**
+	- POST `/api/memorials` with `{ userId, name, story, ... }` and `Authorization: Bearer <token>`
+- **Add Comment:**
+	- POST `/api/memorials/:id/comments` with `{ userId, content }` and `Authorization: Bearer <token>`
+- **Admin Actions:**
+	- All admin endpoints require an admin JWT token.
+
+Keep all design, color, and UX guidance as described above. Focus on a seamless, spiritual, and accessible user experience tightly integrated with the backend API.
+
+## Backend Features & Required Frontend Flows
+
+Ensure the frontend supports all major backend features and API endpoints:
+
+- **User Authentication**
+	- Register, login, and JWT-based session management
+	- Profile view and update
+
+- **Memorial Management**
+	- Create, view, edit, and delete memorials
+	- List/search memorials
+	- Memorial detail pages with candle lighting and comments
+
+- **Comments System**
+	- Add, edit, and delete comments on memorials
+	- Display all comments for a memorial
+
+- **Candle Lighting**
+	- Light a candle on a memorial
+	- Show candle statistics (admin only)
+
+- **Admin Dashboard**
+	- View dashboard statistics
+	- List all memorials and users
+	- Ban/unban users
+	- View and handle content reports
+
+- **Image Upload**
+	- Support image upload for memorials (Cloudinary integration)
+
+- **Content Moderation & Reporting**
+	- Allow users to report inappropriate content
+	- Admin can view and resolve reports
+
+Reference the backend API endpoints in the README for details. All user and admin flows should be accessible and styled according to the design guidance above.

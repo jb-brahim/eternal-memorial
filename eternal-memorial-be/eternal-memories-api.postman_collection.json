@@ -1,0 +1,184 @@
+{
+  "info": {
+    "_postman_id": "eternal-memories-api-collection",
+    "name": "Eternal Memories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"UserPassword123!\",\n  \"name\": \"Test User\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "auth", "register"]
+        }
+      }
+    },
+    {
+      "name": "Login (Admin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"YourAdminPassword\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "Get My Profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/users/me",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "users", "me"]
+        }
+      }
+    },
+    {
+      "name": "Create Memorial",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"description\": \"A loving memory.\",\n  \"dateOfBirth\": \"1950-01-01\",\n  \"dateOfDeath\": \"2020-01-01\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/memorials",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "memorials"]
+        }
+      }
+    },
+    {
+      "name": "List Memorials",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/api/memorials",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "memorials"]
+        }
+      }
+    },
+    {
+      "name": "Add Comment to Memorial",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Rest in peace.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/memorials/{{memorialId}}/comments",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "memorials", "{{memorialId}}", "comments"]
+        }
+      }
+    },
+    {
+      "name": "Light Candle on Memorial",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/memorials/{{memorialId}}/candles",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "memorials", "{{memorialId}}", "candles"]
+        }
+      }
+    },
+    {
+      "name": "Admin: Dashboard Stats",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/admin/dashboard/stats",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "admin", "dashboard", "stats"]
+        }
+      }
+    },
+    {
+      "name": "Admin: List Users",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/admin/users",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "admin", "users"]
+        }
+      }
+    },
+    {
+      "name": "Admin: List Reports",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/admin/reports",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "admin", "reports"]
+        }
+      }
+    }
+  ]
+}
